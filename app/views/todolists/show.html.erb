@@ -1,0 +1,29 @@
+<div class="todolist">
+  <%= content_tag(:span, "#{@todolist.list_name} (#{@todolist.list_due_date})",
+    class: "todolist_link") %>
+  <%= link_to 'Edit', edit_todolist_path(@todolist) %>
+</div>
+
+<p/>
+
+<div id="todoitems">
+  <%= render @todolist.todoitems %>
+</div>
+
+<div>
+  <%= form_for([@todolist, @todolist.todoitems.new]) do |f| %>
+    <div class="field">
+      <%= f.label :task_title %>
+      <%= f.text_field :task_title %>
+    </div>
+      <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description, size: "40x12" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Add New Todoitem" %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Back', todolists_path %>
