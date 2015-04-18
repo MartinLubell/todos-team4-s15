@@ -9,8 +9,10 @@
 <body>
 
 <% if logged_in? %>
-  <div style='float: right;'>
-    You are logged in as <%= current_user.login %>
+  <div style='float: right;'> 
+      <%= link_to "Home", todolists_url %> |
+      <%= link_to "My Account" %> |
+    You are logged in as <%= current_user.login %> |
       <%= link_to "Logout", logout_path, data: {method: :delete} %>
   </div>
 <% end %>

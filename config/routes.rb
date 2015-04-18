@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'accounts/show'
+
+  get 'accounts/edit'
+
+  get 'accounts/update'
+
+  # get 'todoitems/create'
+
+  # get 'todoitems/show'
+
+  # get 'todoitems/edit'
+
+  # get 'todoitems/update'
+
+  # get 'todoitems/destroy'
+
   get 'sessions/new'
 
   get 'sessions/create'
