@@ -4,21 +4,21 @@ class TodoitemsController < ApplicationController
   def create
     @todoitem = @todolist.todoitems.new(todolist_params)
     if @todoitem.save
-      redirect_to @todolist, notice: "Todoitem successfully added!"
+      redirect_to @todolist, notice: "To Do item successfully added!"
     else
-      redirect_to @todolist, alert: "Unable to add Todoitem!"
+      redirect_to @todolist, alert: "Unable to add To Do item!"
     end
   end
 
   def destroy
     @todoitem = @todolist.todoitems.find(params[:id])
     @todoitem.destroy
-    redirect_to @todolist, notice: "Todoitem deleted!"
+    redirect_to @todolist, notice: "To Do item deleted!"
   end
 
   private
     def set_todolist
-      @todolist = todolist.find(params[:todolist_id])
+      @todolist = Todolist.find(params[:todolist_id])
     end
 
     def todolist_params
