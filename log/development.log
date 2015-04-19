@@ -28821,3 +28821,2381 @@ Processing by AccountsController#edit as HTML
   [1m[36mAccount Load (0.1ms)[0m  [1mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1[0m  [["user_id", 61]]
   Rendered accounts/edit.html.erb within layouts/application (2.3ms)
 Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/todolists" for 127.0.0.1 at 2015-04-18 23:08:58 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.3ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 46ms (Views: 40.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/todolists/20" for 127.0.0.1 at 2015-04-18 23:09:21 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 20]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 20]]
+  Rendered todoitems/_todoitem.html.erb (4.8ms)
+  Rendered todolists/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 54ms (Views: 50.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/todolists/20" for 127.0.0.1 at 2015-04-18 23:11:22 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 20]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 20]]
+  Rendered todoitems/_todoitem.html.erb (7.8ms)
+  Rendered todolists/show.html.erb within layouts/application (13.1ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.3ms)
+
+ActionView::Template::Error (undefined method `>' for nil:NilClass):
+    1: <div class="todoitem">
+    2:   <div>
+    3:     <span class="todoitem_title"><%= "#{todoitem.task_title}
+    4:       (#{time_ago_in_words(todoitem.created_at)} ago)" %>
+    5:     </span>
+    6:     <%= link_to "Delete", [@todolist, todoitem],
+    7:       data: { confirm: "todoitem will be deleted?" },
+  app/views/todoitems/_todoitem.html.erb:4:in `_app_views_todoitems__todoitem_html_erb__1973438005239134452_70211822053180'
+  app/views/todolists/show.html.erb:28:in `_app_views_todolists_show_html_erb___3542348161885778188_70211821564660'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (54.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (41.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (88.9ms)
+
+
+Started GET "/todolists/20" for 127.0.0.1 at 2015-04-18 23:12:15 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.3ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 20]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 20]]
+  Rendered todoitems/_todoitem.html.erb (6.5ms)
+  Rendered todolists/show.html.erb within layouts/application (11.1ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (undefined method `>' for nil:NilClass):
+    1: <div class="todoitem">
+    2:   <div>
+    3:     <span class="todoitem_title"><%= "#{todoitem.task_title}
+    4:       (#{time_ago_in_words(todoitem.created_at)} ago)" %>
+    5:     </span>
+    6:     <%= link_to "Delete", [@todolist, todoitem],
+    7:       data: { confirm: "todoitem will be deleted?" },
+  app/views/todoitems/_todoitem.html.erb:4:in `_app_views_todoitems__todoitem_html_erb__1973438005239134452_70211822053180'
+  app/views/todolists/show.html.erb:28:in `_app_views_todolists_show_html_erb___3542348161885778188_70211821564660'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (1.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (91.6ms)
+
+
+Started GET "/todolists/20" for 127.0.0.1 at 2015-04-18 23:12:51 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 20]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 20]]
+  Rendered todoitems/_todoitem.html.erb (2.9ms)
+  Rendered todolists/show.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:12:52 -0400
+
+
+Started GET "/todolists" for 127.0.0.1 at 2015-04-18 23:16:01 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/accounts/edit" for 127.0.0.1 at 2015-04-18 23:16:04 -0400
+Processing by AccountsController#edit as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mAccount Load (0.1ms)[0m  [1mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1[0m  [["user_id", 61]]
+  Rendered accounts/edit.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 54ms (Views: 52.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/accounts/16" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+Processing by AccountsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6OwVOXfmPIOD5gg2OQLXvePE6R1/Xp/n8cxrAuxLtVy0tZoYtRaNfL6tRgRN3FdBLzpeqOPrxq7tyj3tIrTLAw==", "account"=>{"first_name"=>"Napoleon", "last_name"=>"Bonaparte", "gender"=>"male", "age"=>"68"}, "commit"=>"Update Account", "id"=>"16"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mAccount Load (0.1ms)[0m  [1mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1[0m  [["user_id", 61]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "accounts" SET "age" = ?, "updated_at" = ? WHERE "accounts"."id" = ?[0m  [["age", 68], ["updated_at", "2015-04-19 03:16:13.188559"], ["id", 16]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/accounts/16
+Completed 302 Found in 6ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/accounts/16" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+Processing by AccountsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mAccount Load (0.2ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 61]]
+  Rendered accounts/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:16:13 -0400
+
+
+Started GET "/todolists" for 127.0.0.1 at 2015-04-18 23:16:17 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 38ms (Views: 35.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:17:00 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.4ms)
+  Rendered todolists/show.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 46ms (Views: 43.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:17:52 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (3.2ms)
+  Rendered todolists/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 61ms (Views: 59.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.5ms)
+  Rendered todolists/show.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 68ms (Views: 50.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:09 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:21:11 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.3ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (1.9ms)
+  Rendered todolists/show.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 44ms (Views: 41.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:12 -0400
+
+
+Started GET "/todolists" for 127.0.0.1 at 2015-04-18 23:21:20 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.3ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 54ms (Views: 52.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/todolists/20" for 127.0.0.1 at 2015-04-18 23:21:21 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 20]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 20]]
+  Rendered todoitems/_todoitem.html.erb (4.5ms)
+  Rendered todolists/show.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 45ms (Views: 42.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todolists" for 127.0.0.1 at 2015-04-18 23:21:50 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 37ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:21:51 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.6ms)
+  Rendered todolists/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 47ms (Views: 44.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/todolists/19/todoitems/48" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+Processing by TodoitemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Yzgb+/gcbFDAZB5id/DV8UWdJ6pNum1kuIQYG00QtNw/YZTaOuzdr/0vUFADLlUNiWOQH9EPNC2kgk70g+/Kgw==", "todolist_id"=>"19", "id"=>"48"}
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT  "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ? AND "todoitems"."id" = ?  ORDER BY "todoitems"."due_date" ASC LIMIT 1  [["todolist_id", 19], ["id", 48]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?  [["todoitem_id", 48]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "todoitems" WHERE "todoitems"."id" = ?[0m  [["id", 48]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/todolists/19
+Completed 302 Found in 240ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (1.5ms)
+  Rendered todolists/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:21:56 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.3ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (3.5ms)
+  Rendered todolists/show.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:23:54 -0400
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:23:57 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (71.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (90.0ms)
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:24:36 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (71.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (93.0ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.8ms)
+  Rendered todolists/show.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 92ms (Views: 52.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:24:41 -0400
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:24:43 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (89.2ms)
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:27:50 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (89.3ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.3ms)
+  Rendered todolists/show.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 101ms (Views: 77.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:00 -0400
+
+
+Started POST "/todolists/19/todoitems/41" for 127.0.0.1 at 2015-04-18 23:28:02 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/41"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (67.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (39.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (88.7ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.2ms)
+  Rendered todolists/show.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 67ms (Views: 50.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:28:59 -0400
+
+
+Started POST "/todolists/19/todoitems/41" for 127.0.0.1 at 2015-04-18 23:29:01 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/41"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (72.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (42.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (95.1ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.1ms)
+  Rendered todolists/show.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 67ms (Views: 50.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:30:30 -0400
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:30:37 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (69.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (41.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (90.9ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.2ms)
+  Rendered todolists/show.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 68ms (Views: 50.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:34 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.4ms)
+  Rendered todolists/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 47ms (Views: 44.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:33:49 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.0ms)
+  Rendered todolists/show.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 85ms (Views: 82.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:00 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:34:11 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.3ms)
+  Rendered todolists/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 62ms (Views: 59.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:12 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (3.3ms)
+  Rendered todolists/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 74ms (Views: 71.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:34:21 -0400
+
+
+Started POST "/todolists/19/todoitems/41" for 127.0.0.1 at 2015-04-18 23:34:35 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/41"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (39.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (90.0ms)
+
+
+Started POST "/todolists/19/todoitems/42" for 127.0.0.1 at 2015-04-18 23:39:17 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (72.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (88.5ms)
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.8ms)
+  Rendered todolists/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 47ms (Views: 44.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:36 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.1ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (3.1ms)
+  Rendered todolists/show.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 48ms (Views: 45.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:37 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:38 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:38 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:41:38 -0400
+
+
+Started GET "/todolists/19" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (0.1ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (2.8ms)
+  Rendered todolists/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 63ms (Views: 60.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for 127.0.0.1 at 2015-04-18 23:42:34 -0400
+
+
+Started GET "/todoitems/show" for 127.0.0.1 at 2015-04-18 23:43:53 -0400
+
+ActionController::RoutingError (No route matches [GET] "/todoitems/show"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (95.8ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:17:19 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TodolistsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :ensure_login rendered or redirected
+Completed 302 Found in 18ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:17:20 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (188.2ms)
+Completed 200 OK in 1132ms (Views: 1131.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for ::1 at 2015-04-19 18:17:21 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-19 18:17:21 -0400
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:17:28 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eTRCVe717jNppe8Ok2fm/N8P17rDoalpNhdSx97CFKxLQKrzYvGDRwb6Kpj7eu+GZv2OrFYRphpr84v6CtVIsw==", "user"=>{"login"=>"nb", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (32.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "nb"]]
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 693ms (Views: 33.9ms | ActiveRecord: 33.1ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:17:41 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eaiV8F/Jgj+C3QjuNnJcgTgfD+sx0F5oMpMz4JN3BvJL3H1W083vS+2CzXheb1X7ge1W/aRgURtvd+rdR2Ba7Q==", "user"=>{"login"=>"nb", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "nb"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:17:41 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (38.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (89.3ms)
+Completed 200 OK in 228ms (Views: 135.5ms | ActiveRecord: 38.6ms)
+
+
+Started GET "/todolists/19" for ::1 at 2015-04-19 18:17:44 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 61]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 61], ["id", 19]]
+  [1m[35mTodoitem Load (8.3ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (206.1ms)
+  Rendered todolists/show.html.erb within layouts/application (371.4ms)
+Completed 200 OK in 424ms (Views: 412.7ms | ActiveRecord: 8.9ms)
+
+
+Started POST "/todolists/19/todoitems/42" for ::1 at 2015-04-19 18:18:36 -0400
+
+ActionController::RoutingError (No route matches [POST] "/todolists/19/todoitems/42"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (28.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (107.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (110.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (228.2ms)
+
+
+Started GET "/todolists/19" for ::1 at 2015-04-19 18:18:40 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["user_id", 61], ["id", 19]]
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC[0m  [["todolist_id", 19]]
+  Rendered todoitems/_todoitem.html.erb (1.6ms)
+  Rendered todolists/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 133ms (Views: 125.7ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tags_todoitems_on_todoitem_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tags_todoitems_on_todoitem_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tags_todoitems_on_tag_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tags_todoitems_on_tag_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_todoitems_on_todolist_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_todoitems_on_todolist_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_todolists_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_todolists_on_user_id' AND type='index'
+[0m
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 18:51:43 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"E5tvGI6e9U08K9zcyXj1cDXHh37FhsXtVkbZueRUSzoh74e+ApqYOVN0GUqhZfwKjDXeaFA2yp4LogCEMEMXJQ=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:51:44 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 381ms (Views: 381.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:51:54 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KYIowxXZsl9L9X2+JfBJxvwEUIEJIRv/TcPDlnU02Symepo9yeqwIEzxVjjuTAQy3NP/k74MffoywusTCvQlzg==", "user"=>{"login"=>"Matt", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (37.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "Matt"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 233ms (ActiveRecord: 37.5ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:51:54 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 62]]
+  [1m[35mTodolist Load (36.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 62]]
+  Rendered todolists/index.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 462ms (Views: 317.1ms | ActiveRecord: 36.3ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:53:21 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (120.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (526.4ms)
+  [1m[35mUser Load (32.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 62]]
+Completed 200 OK in 2231ms (Views: 2072.9ms | ActiveRecord: 32.8ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:53:40 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G05dEiq1KJYlqj/zLYYI8QvmFrVyjoOcYh/+kWBJ/c+Utu/s9oYq6SKuFHXmOkUFKzG5p8Wj5ZkdHtYUH4kBLQ==", "user"=>{"login"=>"Matt", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Matt"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 72ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:53:40 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 62]]
+  [1m[36mTodolist Load (1.0ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 62]]
+  Rendered todolists/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 290ms (Views: 63.8ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 18:54:24 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a1rc/n9GKv0dWNO7ydu2jP69rctTgX4MGXGZVHTnYoHkom4Ao3Uoghpc+D0CZ/t43moC2eSsGAlmcLHRCyeeYw=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:54:24 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 134ms (Views: 133.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:54:33 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YzIXI3QiqtUdKB8tw9mxM2zPvjFvDkcZVUV9rpH7Et8+4ztNNiZJDfAqbZtFzFLrbK7XzTvcaA/WunEdyotlaw==", "user"=>{"login"=>"Tim", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "Tim"]]
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 104ms (Views: 32.0ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:54:42 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZdfqZTlVcqT6gimfsqQKUTsX+g1czWrjP0R40zp67ZM4BsYLe1GRfBeAWyk0semJO3aT8QgfRfW8u3RgYQqaJw==", "user"=>{"login"=>"Tim", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Tim"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 73ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:54:42 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 63]]
+  Rendered todolists/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 63ms (Views: 60.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todolists" for ::1 at 2015-04-19 18:54:47 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 63]]
+  Rendered todolists/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 205ms (Views: 203.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 18:54:49 -0400
+Processing by AccountsController#edit as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+  [1m[36mAccount Load (9.3ms)[0m  [1mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1[0m  [["user_id", 63]]
+  Rendered accounts/edit.html.erb within layouts/application (20.3ms)
+Completed 500 Internal Server Error in 174ms (ActiveRecord: 9.5ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h1>Editing account</h1>
+    2: 
+    3: <%= form_for(@account) do |f| %>
+    4: 
+    5:   <div class="field">
+    6:     <%= f.label :first_name %><br/>
+  app/views/accounts/edit.html.erb:3:in `_app_views_accounts_edit_html_erb___4040711100280229344_70240527050380'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (49.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (64.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (137.0ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 18:54:49 -0400
+Processing by AccountsController#edit as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+  [1m[36mAccount Load (0.1ms)[0m  [1mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1[0m  [["user_id", 63]]
+  Rendered accounts/edit.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h1>Editing account</h1>
+    2: 
+    3: <%= form_for(@account) do |f| %>
+    4: 
+    5:   <div class="field">
+    6:     <%= f.label :first_name %><br/>
+  app/views/accounts/edit.html.erb:3:in `_app_views_accounts_edit_html_erb___4040711100280229344_70240537510160'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (39.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (85.4ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 18:55:01 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a0xitaIvUhVVDZkDtLa6WhBgEspMCuIMdJLs+4CiBto2nU7b4CuxzbgP67Uyo1mCEAF7NhjYzRr3beBI29Jxbg=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:55:01 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 77ms (Views: 76.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:55:07 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LpxM27sCp+iax6U2Qo2hL+FrS6UKXT/9UjarobAnnyYQ6MVuMj+94THa2o2EJfrHYWWH4YUd5fcjmPJHBAvaRw==", "user"=>{"login"=>"nb", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "nb"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 73ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:55:07 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mTodolist Load (28.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 61]]
+  Rendered todolists/index.html.erb within layouts/application (75.9ms)
+Completed 200 OK in 127ms (Views: 96.9ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 18:55:10 -0400
+Processing by AccountsController#edit as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 61]]
+  [1m[35mAccount Load (16.6ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 61]]
+  Rendered accounts/edit.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 110ms (Views: 86.9ms | ActiveRecord: 16.9ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 18:55:54 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kymBxyKgFv+nyV6eh83KcpKBHuaKfQlHcwoa9/aRkTetXQhyq50M9gzUISVBZZGaEo/SogU9000CpEMRQr3UVg=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:55:54 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 57ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:56:15 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OArYgh27cLTgqJpVxZ4M7uTe19SHFy/hgghgFeJduHjT1hyIWoSt6/oRhMmBjo47RtwmKjX5KVm1//WwCwkZsA==", "user"=>{"login"=>"Matt", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Matt"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:56:15 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 62]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 62]]
+  Rendered todolists/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 54ms (Views: 52.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 18:56:19 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"4YuqdFGEa95bVBdFAIogGN1yqWVCkuGzxPz2GgYSS2wKV25+Fru2gUHtCdlEmqLNf3BYm/B85wvzC2O/70bqpA=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:56:19 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 18:56:25 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mx+uaJqwLnDvHll0e3IH0FlEQ+/wF0W/M49q4+KAYjqyjggsJHMHrEYqzjjAgK99xm0h9B/nbuY45rdfmG1CQg==", "user"=>{"login"=>"Tim", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "Tim"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 18:56:25 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 63]]
+  Rendered todolists/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 34ms (Views: 32.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 18:56:28 -0400
+Processing by AccountsController#edit as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 63]]
+  Rendered accounts/edit.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h1>Editing account</h1>
+    2: 
+    3: <%= form_for(@account) do |f| %>
+    4: 
+    5:   <div class="field">
+    6:     <%= f.label :first_name %><br/>
+  app/views/accounts/edit.html.erb:3:in `_app_views_accounts_edit_html_erb___4040711100280229344_70240527050380'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (52.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (46.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (110.6ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 18:56:29 -0400
+Processing by AccountsController#edit as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 63]]
+  Rendered accounts/edit.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h1>Editing account</h1>
+    2: 
+    3: <%= form_for(@account) do |f| %>
+    4: 
+    5:   <div class="field">
+    6:     <%= f.label :first_name %><br/>
+  app/views/accounts/edit.html.erb:3:in `_app_views_accounts_edit_html_erb___4040711100280229344_70240537510160'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (37.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (83.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAccount Load (0.4ms)[0m  SELECT "accounts".* FROM "accounts"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "accounts" WHERE "accounts"."id" = ?  [["id", 16]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 61]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 62]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 63]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT "todolists".* FROM "todolists"  ORDER BY "todolists"."list_due_date" ASC
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "todolists" WHERE "todolists"."id" = ?  [["id", 19]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "todolists" WHERE "todolists"."id" = ?[0m  [["id", 20]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mTodoitem Load (0.3ms)[0m  [1mSELECT "todoitems".* FROM "todoitems"  ORDER BY "todoitems"."due_date" ASC[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 42]]
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 42]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 41]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 41]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 47]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 47]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 45]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 45]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 43]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 43]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 44]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 44]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags_todoitems" WHERE "tags_todoitems"."todoitem_id" = ?[0m  [["todoitem_id", 46]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "todoitems" WHERE "todoitems"."id" = ?  [["id", 46]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "tags_todoitems" WHERE "tags_todoitems"."tag_id" = ?  [["tag_id", 29]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 29]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "tags_todoitems" WHERE "tags_todoitems"."tag_id" = ?  [["tag_id", 30]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 30]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "tags_todoitems" WHERE "tags_todoitems"."tag_id" = ?  [["tag_id", 31]]
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "tags" WHERE "tags"."id" = ?[0m  [["id", 31]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["login", "nb"], ["password_digest", "$2a$10$Z1TQTB/qH.2yqXV3wYdT9uQ7hu1u3IYSN32i1gXT6Beqs7VHhmjt."], ["created_at", "2015-04-19 22:58:25.164464"], ["updated_at", "2015-04-19 22:58:25.164464"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["login", "Matt"], ["password_digest", "$2a$10$Pdwn1wZ5q7dH2Gwncbd3hO3W2VAxCQ/hbvajoWgvmvUWAkfYoJNze"], ["created_at", "2015-04-19 22:58:25.236929"], ["updated_at", "2015-04-19 22:58:25.236929"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["login", "Tim"], ["password_digest", "$2a$10$VvH9idDGeAVMAeJGPi71o.YoJf6WiDtX5dM4Jl7eI41RN/MpuC4ZS"], ["created_at", "2015-04-19 22:58:25.308644"], ["updated_at", "2015-04-19 22:58:25.308644"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 38], ["gender", "male"], ["first_name", "Napoleon"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:58:25.311967"], ["updated_at", "2015-04-19 22:58:25.311967"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "nb"]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 64]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 64], ["updated_at", "2015-04-19 22:58:25.342065"], ["id", 17]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 30], ["gender", "male"], ["first_name", "Matt"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:58:25.345340"], ["updated_at", "2015-04-19 22:58:25.345340"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Matt"]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 65]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 65], ["updated_at", "2015-04-19 22:58:25.348716"], ["id", 18]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 30], ["gender", "male"], ["first_name", "Tim"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:58:25.351117"], ["updated_at", "2015-04-19 22:58:25.351117"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Tim"]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 66]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 66], ["updated_at", "2015-04-19 22:58:25.354574"], ["id", 19]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["list_name", "Italian Campaign NB"], ["list_due_date", "1796-11-01"], ["user_id", 64], ["created_at", "2015-04-19 22:58:25.359816"], ["updated_at", "2015-04-19 22:58:25.359816"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["list_name", "Russian Campaign NB"], ["list_due_date", "1812-11-30"], ["user_id", 64], ["created_at", "2015-04-19 22:58:25.379952"], ["updated_at", "2015-04-19 22:58:25.379952"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mAccount Load (0.2ms)[0m  SELECT "accounts".* FROM "accounts"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "accounts" WHERE "accounts"."id" = ?  [["id", 17]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "accounts" WHERE "accounts"."id" = ?[0m  [["id", 18]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "accounts" WHERE "accounts"."id" = ?  [["id", 19]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 64]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 65]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 66]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT "todolists".* FROM "todolists"  ORDER BY "todolists"."list_due_date" ASC
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "todolists" WHERE "todolists"."id" = ?  [["id", 22]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "todolists" WHERE "todolists"."id" = ?[0m  [["id", 23]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36mTodoitem Load (0.2ms)[0m  [1mSELECT "todoitems".* FROM "todoitems"  ORDER BY "todoitems"."due_date" ASC[0m
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["login", "nb"], ["password_digest", "$2a$10$x3YS7zOI9acEblNGR9iiB.Xn7YoCW6rYDP4U399C9SmHKOTNlTQH2"], ["created_at", "2015-04-19 22:59:16.842915"], ["updated_at", "2015-04-19 22:59:16.842915"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["login", "Matt"], ["password_digest", "$2a$10$PNXbC3NVOznjMYH.wYAP2.yRs8TEDUXMJyRR4ia935ZrXRyqGl9tS"], ["created_at", "2015-04-19 22:59:16.914211"], ["updated_at", "2015-04-19 22:59:16.914211"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("login", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["login", "Tim"], ["password_digest", "$2a$10$iFNMk5UMhHF8f0rNr7BvLO3hr0wR/MPnlEwJ3BqC6YeuLfZinB/qm"], ["created_at", "2015-04-19 22:59:16.985728"], ["updated_at", "2015-04-19 22:59:16.985728"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 38], ["gender", "male"], ["first_name", "Napoleon"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:59:16.989292"], ["updated_at", "2015-04-19 22:59:16.989292"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "nb"]]
+  [1m[35mAccount Load (0.2ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 67]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 67], ["updated_at", "2015-04-19 22:59:17.006826"], ["id", 20]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 30], ["gender", "male"], ["first_name", "Matt"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:59:17.009957"], ["updated_at", "2015-04-19 22:59:17.009957"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Matt"]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 68]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 68], ["updated_at", "2015-04-19 22:59:17.013660"], ["id", 21]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "accounts" ("age", "gender", "first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["age", 28], ["gender", "male"], ["first_name", "Tim"], ["last_name", "Bonaparte"], ["created_at", "2015-04-19 22:59:17.016683"], ["updated_at", "2015-04-19 22:59:17.016683"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Tim"]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 69]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "accounts" SET "user_id" = ?, "updated_at" = ? WHERE "accounts"."id" = ?  [["user_id", 69], ["updated_at", "2015-04-19 22:59:17.021445"], ["id", 22]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["list_name", "Italian Campaign NB"], ["list_due_date", "1796-11-01"], ["user_id", 67], ["created_at", "2015-04-19 22:59:17.041306"], ["updated_at", "2015-04-19 22:59:17.041306"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["list_name", "Russian Campaign NB"], ["list_due_date", "1812-11-30"], ["user_id", 67], ["created_at", "2015-04-19 22:59:17.045036"], ["updated_at", "2015-04-19 22:59:17.045036"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["list_name", "Italian Campaign MB"], ["list_due_date", "1796-11-01"], ["user_id", 68], ["created_at", "2015-04-19 22:59:17.048565"], ["updated_at", "2015-04-19 22:59:17.048565"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["list_name", "Russian Campaign MB"], ["list_due_date", "1812-11-30"], ["user_id", 68], ["created_at", "2015-04-19 22:59:17.051716"], ["updated_at", "2015-04-19 22:59:17.051716"]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["list_name", "Italian Campaign TB"], ["list_due_date", "1796-11-01"], ["user_id", 69], ["created_at", "2015-04-19 22:59:17.055347"], ["updated_at", "2015-04-19 22:59:17.055347"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todolists" ("list_name", "list_due_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["list_name", "Russian Campaign TB"], ["list_due_date", "1812-11-30"], ["user_id", 69], ["created_at", "2015-04-19 22:59:17.058749"], ["updated_at", "2015-04-19 22:59:17.058749"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["list_name", "Italian Campaign NB"]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["list_name", "Russian Campaign NB"]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["list_name", "Italian Campaign MB"]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["list_name", "Russian Campaign MB"]]
+  [1m[35mTodolist Load (0.1ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1  [["list_name", "Italian Campaign TB"]]
+  [1m[36mTodolist Load (0.1ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."list_name" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["list_name", "Russian Campaign TB"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Contact Hannibal for elephants"], ["due_date", "1791-10-20"], ["description", "Wondering if elephants can travel in the Alps!?"], ["done", "f"], ["todolist_id", 24], ["created_at", "2015-04-19 22:59:17.070459"], ["updated_at", "2015-04-19 22:59:17.070459"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Register Comp Corp 10 men"], ["due_date", "1791-10-15"], ["description", "Ask for Corp 10 confirmations letters."], ["done", "f"], ["todolist_id", 24], ["created_at", "2015-04-19 22:59:17.074070"], ["updated_at", "2015-04-19 22:59:17.074070"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Register Company Corp 4 men"], ["due_date", "1796-09-15"], ["description", "Contact all French departments for conscripts."], ["done", "t"], ["todolist_id", 25], ["created_at", "2015-04-19 22:59:17.077787"], ["updated_at", "2015-04-19 22:59:17.077787"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Follow up registration Comp Corp 4"], ["due_date", "1796-10-15"], ["description", "Ask for Corp 4 confirmations letters."], ["done", "t"], ["todolist_id", 25], ["created_at", "2015-04-19 22:59:17.081204"], ["updated_at", "2015-04-19 22:59:17.081204"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Russian rivers survey"], ["due_date", "1795-12-15"], ["description", "Detailled river maps done by military surveyors."], ["done", "t"], ["todolist_id", 25], ["created_at", "2015-04-19 22:59:17.084118"], ["updated_at", "2015-04-19 22:59:17.084118"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Practice building bridges as if over Volvograd River"], ["due_date", "1811-10-13"], ["description", "Strength tests need to be performed."], ["done", "f"], ["todolist_id", 25], ["created_at", "2015-04-19 22:59:17.087599"], ["updated_at", "2015-04-19 22:59:17.087599"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Send peace letter"], ["due_date", "1795-10-15"], ["description", "Show we are friends before we attack."], ["done", "f"], ["todolist_id", 25], ["created_at", "2015-04-19 22:59:17.090913"], ["updated_at", "2015-04-19 22:59:17.090913"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Contact Hannibal for elephants"], ["due_date", "1791-10-20"], ["description", "Wondering if elephants can travel in the Alps!?"], ["done", "f"], ["todolist_id", 26], ["created_at", "2015-04-19 22:59:17.094916"], ["updated_at", "2015-04-19 22:59:17.094916"]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Register Comp Corp 10 men"], ["due_date", "1791-10-15"], ["description", "Ask for Corp 10 confirmations letters."], ["done", "f"], ["todolist_id", 26], ["created_at", "2015-04-19 22:59:17.098580"], ["updated_at", "2015-04-19 22:59:17.098580"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Register Company Corp 4 men"], ["due_date", "1796-09-15"], ["description", "Contact all French departments for conscripts."], ["done", "t"], ["todolist_id", 27], ["created_at", "2015-04-19 22:59:17.102266"], ["updated_at", "2015-04-19 22:59:17.102266"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Follow up registration Comp Corp 4"], ["due_date", "1796-10-15"], ["description", "Ask for Corp 4 confirmations letters."], ["done", "t"], ["todolist_id", 27], ["created_at", "2015-04-19 22:59:17.106317"], ["updated_at", "2015-04-19 22:59:17.106317"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Russian rivers survey"], ["due_date", "1795-12-15"], ["description", "Detailled river maps done by military surveyors."], ["done", "t"], ["todolist_id", 27], ["created_at", "2015-04-19 22:59:17.109971"], ["updated_at", "2015-04-19 22:59:17.109971"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Practice building bridges as if over Volvograd River"], ["due_date", "1811-10-13"], ["description", "Strength tests need to be performed."], ["done", "f"], ["todolist_id", 27], ["created_at", "2015-04-19 22:59:17.113032"], ["updated_at", "2015-04-19 22:59:17.113032"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Send peace letter"], ["due_date", "1795-10-15"], ["description", "Show we are friends before we attack."], ["done", "f"], ["todolist_id", 27], ["created_at", "2015-04-19 22:59:17.116373"], ["updated_at", "2015-04-19 22:59:17.116373"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Contact Hannibal for elephants"], ["due_date", "1791-10-20"], ["description", "Wondering if elephants can travel in the Alps!?"], ["done", "f"], ["todolist_id", 28], ["created_at", "2015-04-19 22:59:17.119662"], ["updated_at", "2015-04-19 22:59:17.119662"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Register Comp Corp 10 men"], ["due_date", "1791-10-15"], ["description", "Ask for Corp 10 confirmations letters."], ["done", "f"], ["todolist_id", 28], ["created_at", "2015-04-19 22:59:17.123035"], ["updated_at", "2015-04-19 22:59:17.123035"]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Register Company Corp 4 men"], ["due_date", "1796-09-15"], ["description", "Contact all French departments for conscripts."], ["done", "t"], ["todolist_id", 29], ["created_at", "2015-04-19 22:59:17.126836"], ["updated_at", "2015-04-19 22:59:17.126836"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Follow up registration Comp Corp 4"], ["due_date", "1796-10-15"], ["description", "Ask for Corp 4 confirmations letters."], ["done", "t"], ["todolist_id", 29], ["created_at", "2015-04-19 22:59:17.130753"], ["updated_at", "2015-04-19 22:59:17.130753"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Russian rivers survey"], ["due_date", "1795-12-15"], ["description", "Detailled river maps done by military surveyors."], ["done", "t"], ["todolist_id", 29], ["created_at", "2015-04-19 22:59:17.134082"], ["updated_at", "2015-04-19 22:59:17.134082"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["task_title", "Practice building bridges as if over Volvograd River"], ["due_date", "1811-10-13"], ["description", "Strength tests need to be performed."], ["done", "f"], ["todolist_id", 29], ["created_at", "2015-04-19 22:59:17.137424"], ["updated_at", "2015-04-19 22:59:17.137424"]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "todoitems" ("task_title", "due_date", "description", "done", "todolist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["task_title", "Send peace letter"], ["due_date", "1795-10-15"], ["description", "Show we are friends before we attack."], ["done", "f"], ["todolist_id", 29], ["created_at", "2015-04-19 22:59:17.141327"], ["updated_at", "2015-04-19 22:59:17.141327"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mTodoitem Load (0.3ms)[0m  [1mSELECT  "todoitems".* FROM "todoitems" WHERE "todoitems"."task_title" = ?  ORDER BY "todoitems"."due_date" ASC LIMIT 1[0m  [["task_title", "Russian rivers survey"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "Urgent"], ["created_at", "2015-04-19 22:59:17.153154"], ["updated_at", "2015-04-19 22:59:17.153154"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags_todoitems" ("todoitem_id", "tag_id") VALUES (?, ?)  [["todoitem_id", 53], ["tag_id", 32]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "French War Minister"], ["created_at", "2015-04-19 22:59:17.158842"], ["updated_at", "2015-04-19 22:59:17.158842"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags_todoitems" ("todoitem_id", "tag_id") VALUES (?, ?)  [["todoitem_id", 53], ["tag_id", 33]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "Construction"], ["created_at", "2015-04-19 22:59:17.162785"], ["updated_at", "2015-04-19 22:59:17.162785"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "tags_todoitems" ("todoitem_id", "tag_id") VALUES (?, ?)  [["todoitem_id", 53], ["tag_id", 34]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for ::1 at 2015-04-19 18:59:24 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (29.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+Completed 404 Not Found in 31ms (ActiveRecord: 29.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/controllers/todolists_controller.rb:7:in `index'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (58.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (137.5ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:28 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (46.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (41.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (91.9ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:28 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (42.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (93.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:33 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (40.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (91.8ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:42 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (42.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (91.6ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:42 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (38.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (85.9ms)
+
+
+Started GET "/logout" for ::1 at 2015-04-19 18:59:43 -0400
+
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/martinlubell/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (36.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (110.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (38.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (87.8ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 18:59:53 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__4458849889102924138_70240554533120'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (50.0ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (47.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (101.7ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 19:00:15 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 63]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/controllers/todolists_controller.rb:7:in `index'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.2ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (39.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (95.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 19:00:19 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 63]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=63):
+  app/controllers/application_controller.rb:18:in `current_user'
+  app/controllers/todolists_controller.rb:7:in `index'
+
+
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.7ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (45.5ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (39.6ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/martinlubell/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (86.0ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 19:01:29 -0400
+Processing by TodolistsController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :ensure_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 19:01:32 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 318ms (Views: 317.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application-b039b2059b0472b89ed736be82f1c1e4.css?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/accounts-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/sessions-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for ::1 at 2015-04-19 19:01:35 -0400
+
+
+Started GET "/assets/todoitems-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-19 19:01:36 -0400
+
+
+Started GET "/assets/application-72ca61f8964a833c8434acaafe1d9633.js?body=1" for ::1 at 2015-04-19 19:01:36 -0400
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 19:01:49 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AdAiQ3X3z6U3bVfsx8vusu5hss3bXtjOuxfY3g+6MDcCmlAuZ0YtiTdbZBTuXqzTNH8ENQCRCQHNoZoDTsKzXA==", "user"=>{"login"=>"Tim", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1  [["login", "Tim"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 72ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 19:01:50 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 69]]
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 69]]
+  Rendered todolists/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 107ms (Views: 105.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/logout" for ::1 at 2015-04-19 19:01:57 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BBHdHl/qefEnkgUlXIG79ivgp7JkONMPRh4e8Nh6ExwHW69zTVub3SekNt11FPmX8f4RSr/3AsAwqFwtmQKQdw=="}
+Redirected to http://localhost:3000/login
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2015-04-19 19:01:57 -0400
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 93ms (Views: 92.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2015-04-19 19:02:16 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"41VvAj/iJlvRAxjEcHSPJo3SwMCZI66/RdrJniWu0FLl7DpsJ1/zYPG5zZGegyxYmqcd4adZlh46ikZwmlIX7Q==", "user"=>{"login"=>"Matt", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."login" = ? LIMIT 1[0m  [["login", "Matt"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2015-04-19 19:02:16 -0400
+Processing by TodolistsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 68]]
+  [1m[36mTodolist Load (0.2ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0[0m  [["user_id", 68]]
+  Rendered todolists/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 46ms (Views: 44.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/todolists/26" for ::1 at 2015-04-19 19:02:20 -0400
+Processing by TodolistsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 68]]
+  [1m[36mTodolist Load (0.3ms)[0m  [1mSELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ? AND "todolists"."id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 1[0m  [["user_id", 68], ["id", 26]]
+  [1m[35mTodoitem Load (0.2ms)[0m  SELECT "todoitems".* FROM "todoitems" WHERE "todoitems"."todolist_id" = ?  ORDER BY "todoitems"."due_date" ASC  [["todolist_id", 26]]
+  Rendered todoitems/_todoitem.html.erb (58.3ms)
+  Rendered todolists/show.html.erb within layouts/application (354.5ms)
+Completed 200 OK in 433ms (Views: 429.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/accounts/edit" for ::1 at 2015-04-19 19:02:25 -0400
+Processing by AccountsController#edit as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 68]]
+  [1m[35mAccount Load (0.1ms)[0m  SELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? LIMIT 1  [["user_id", 68]]
+  Rendered accounts/edit.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 90ms (Views: 88.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/todolists" for ::1 at 2015-04-19 19:02:29 -0400
+Processing by TodolistsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 68]]
+  [1m[35mTodolist Load (0.2ms)[0m  SELECT  "todolists".* FROM "todolists" WHERE "todolists"."user_id" = ?  ORDER BY "todolists"."list_due_date" ASC LIMIT 5 OFFSET 0  [["user_id", 68]]
+  Rendered todolists/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 30ms (Views: 28.5ms | ActiveRecord: 0.3ms)

@@ -9,13 +9,11 @@ Rails.application.routes.draw do
 
   get 'accounts/edit'
 
-  # get 'accounts/update'
-
   # get 'todoitems/create'
 
   # get 'todoitems/show'
 
-  # get 'todoitems/edit'
+  get 'todoitems/edit'
 
   # get 'todoitems/update'
 
@@ -33,7 +31,7 @@ Rails.application.routes.draw do
   root to: "todolists#index"
 
   resources :todolists do
-    resources :todoitems, only: [:create, :destroy]
+    resources :todoitems, only: [:create, :edit, :destroy]
   end
 
   resources :sessions, only: [:create, :destroy, :new]

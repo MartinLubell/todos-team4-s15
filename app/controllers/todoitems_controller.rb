@@ -10,6 +10,11 @@ class TodoitemsController < ApplicationController
     end
   end
 
+  # def edit
+  #   @todoitem = @todolist.todoitems.find(params[:id])
+  #     redirect_to @todolist
+  # end
+
   def destroy
     @todoitem = @todolist.todoitems.find(params[:id])
     @todoitem.destroy

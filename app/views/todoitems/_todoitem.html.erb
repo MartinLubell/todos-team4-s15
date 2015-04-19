@@ -3,6 +3,8 @@
     <span class="todoitem_title"><%= "#{todoitem.task_title}
       (#{time_ago_in_words(todoitem.created_at)} ago)" %>
     </span>
+        <%= link_to "Edit", [@todolist, todoitem],
+      method: :edit %>
     <%= link_to "Delete", [@todolist, todoitem],
       data: { confirm: "todoitem will be deleted?" },
       method: :delete %>
